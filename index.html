@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML & CSS MCQ Test - NICT</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.0/index.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --whatsapp: #25D366;
+  --bg: #0f172a;
+  --bg-light: #1e293b;
+  --text: #f1f5f9;
+  --text-dim: #94a3b8;
+  --border: #334155;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  min-height: 100vh;
+  color: var(--text);
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.screen { display: none; animation: fadeIn 0.6s ease; }
+.screen.active { display: block; }
+
+/* Login Screen */
+.login-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.login-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff, #c7d2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.login-header p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.nict-badge {
+  display: inline-block;
+  background: rgba(37, 211, 102, 0.15);
+  color: var(--whatsapp);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 10px;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-group label .req {
+  color: var(--danger);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.form-input::placeholder {
+  color: #475569;
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  display: none;
+}
+
+.form-error.show { display: block; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.terms-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.terms-box strong { color: var(--text); }
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.checkbox-group input {
+  margin-top: 3px;
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: white;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(51, 65, 85, 0.5);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(51, 65, 85, 0.8);
+}
+
+/* Welcome Screen */
+.welcome-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 720px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.welcome-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 40px;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.welcome-card h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff, #c7d2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.welcome-card .subtitle {
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+
+.student-info-banner {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.student-info-banner .avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.student-info-banner .info .name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.student-info-banner .info .meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.topic-item {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topic-item .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.info-box {
+  background: rgba(15, 23, 42, 0.6);
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  flex: 1;
+  min-width: 100px;
+}
+
+.info-box .label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.info-box .value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Quiz Screen */
+.quiz-header {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.quiz-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quiz-title .logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.quiz-title h2 { font-size: 1.1rem; font-weight: 700; }
+.quiz-title p { font-size: 0.75rem; color: var(--text-dim); }
+
+.quiz-stats {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.stat-icon { font-size: 1.1rem; }
+.stat-info .stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; }
+.stat-info .stat-value { font-weight: 700; font-size: 0.9rem; }
+
+.progress-container {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+}
+
+.progress-bar {
+  height: 7px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+.question-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 16px;
+}
+
+.question-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.question-number {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.question-category {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.question-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.question-text code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  background: rgba(15, 23, 42, 0.5);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option:hover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.08);
+  transform: translateX(4px);
+}
+
+.option.selected {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.option-letter {
+  width: 32px;
+  height: 32px;
+  background: rgba(51, 65, 85, 0.6);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.option.selected .option-letter {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.option-text code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.nav-buttons .btn {
+  flex: 1;
+  min-width: 110px;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+}
+
+.question-nav {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.question-nav h3 {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.question-grid::-webkit-scrollbar { width: 6px; }
+.question-grid::-webkit-scrollbar-track { background: rgba(15,23,42,0.4); border-radius: 3px; }
+.question-grid::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+.q-dot {
+  aspect-ratio: 1;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.q-dot:hover { transform: scale(1.08); border-color: var(--primary); }
+
+.q-dot.current {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-color: transparent;
+  color: white;
+}
+
+.q-dot.answered {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.q-dot.marked {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.submit-section {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Result Screen */
+.result-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.score-circle {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.score-circle svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+.score-circle circle { fill: none; stroke-width: 12; }
+.score-circle .bg-circle { stroke: rgba(51, 65, 85, 0.5); }
+.score-circle .progress-circle {
+  stroke: url(#scoreGradient);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.5s ease;
+}
+
+.score-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-value .percent {
+  font-size: 2.3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.score-value .label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-card h2 { font-size: 1.8rem; margin-bottom: 6px; }
+.result-card .result-msg { color: var(--text-dim); margin-bottom: 20px; }
+
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.result-stat {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.result-stat .stat-icon { font-size: 1.4rem; margin-bottom: 4px; }
+.result-stat .stat-num { font-size: 1.5rem; font-weight: 800; }
+.result-stat .stat-label { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
+
+.result-stat.correct .stat-num { color: var(--success); }
+.result-stat.incorrect .stat-num { color: var(--danger); }
+.result-stat.skipped .stat-num { color: var(--warning); }
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.result-actions .btn { flex: 1; min-width: 180px; }
+
+.whatsapp-notice {
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #6ee7b7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.whatsapp-notice .wa-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--whatsapp);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.review-section {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 16px;
+  display: none;
+}
+
+.review-section.show { display: block; }
+
+.review-section h3 { margin-bottom: 16px; font-size: 1.2rem; }
+
+.topic-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.topic-summary-item {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.topic-summary-item .t-name {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.topic-summary-item .t-score {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.review-item {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+
+.review-item.correct-review { border-left: 4px solid var(--success); }
+.review-item.incorrect-review { border-left: 4px solid var(--danger); }
+.review-item.skipped-review { border-left: 4px solid var(--warning); }
+
+.review-q-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.review-q-num { font-weight: 700; color: var(--text-dim); font-size: 0.85rem; }
+
+.review-status {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.review-status.correct { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+.review-status.incorrect { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+.review-status.skipped { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+
+.review-q-text { font-size: 0.95rem; margin-bottom: 10px; line-height: 1.5; }
+.review-q-text code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.review-answer {
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.review-answer.your-answer {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.review-answer.correct-answer {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.question-card.slide-in { animation: slideIn 0.35s ease; }
+
+@media (max-width: 640px) {
+  body { padding: 12px; }
+  .login-card, .welcome-card, .result-card { padding: 24px 18px; }
+  .login-header h1, .welcome-card h1 { font-size: 1.5rem; }
+  .topics-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .quiz-header { padding: 14px; }
+  .question-card { padding: 20px; }
+  .question-text { font-size: 1rem; }
+  .result-actions .btn { min-width: 140px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- LOGIN SCREEN -->
+  <div class="screen active" id="loginScreen">
+    <div class="login-wrapper">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="login-logo">🎓</div>
+          <h1>Student Login</h1>
+          <p>HTML & CSS MCQ Test Portal</p>
+          <div class="nict-badge">📱 Report sent to NICT: 7978758965</div>
+        </div>
+
+        <form id="loginForm" onsubmit="return handleLogin(event)">
+          <div class="form-group">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" class="form-input" id="studentName" placeholder="Enter your full name" required>
+            <div class="form-error" id="nameError">Please enter your name</div>
+          </div>
+
+          <div class="form-group">
+            <label>Mobile Number <span class="req">*</span></label>
+            <input type="tel" class="form-input" id="studentMobile" placeholder="10-digit mobile number" maxlength="10" required>
+            <div class="form-error" id="mobileError">Enter valid 10-digit mobile number</div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" class="form-input" id="studentEmail" placeholder="your.email@example.com" required>
+            <div class="form-error" id="emailError">Enter valid email address</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Roll No / ID</label>
+              <input type="text" class="form-input" id="studentRoll" placeholder="e.g., NICT001">
+            </div>
+            <div class="form-group">
+              <label>Batch / Course</label>
+              <input type="text" class="form-input" id="studentBatch" placeholder="e.g., Web Design">
+            </div>
+          </div>
+
+          <div class="terms-box">
+            <strong>📋 Test Instructions:</strong><br>
+            • Total <strong>105 questions</strong> • Duration: <strong>60 minutes</strong> • Passing: <strong>60%</strong><br>
+            • On submission, a summary report will be sent via <strong>WhatsApp</strong> to NICT (7978758965) from your registered mobile number.
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="agreeTerms" required>
+            <label for="agreeTerms">I confirm that the details provided are correct and I agree to the test rules.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Proceed to Test →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- WELCOME SCREEN -->
+  <div class="screen" id="welcomeScreen">
+    <div class="welcome-wrapper">
+      <div class="welcome-card">
+        <div class="welcome-icon">📝</div>
+        <h1>HTML & CSS MCQ Test</h1>
+        <p class="subtitle">Test your knowledge of HTML Basics, HTML5 & CSS</p>
+
+        <div class="student-info-banner">
+          <div class="avatar" id="studentAvatar">S</div>
+          <div class="info">
+            <div class="name" id="welcomeName">Student Name</div>
+            <div class="meta" id="welcomeMeta">📱 +91 XXXXXXXXXX • 📧 email@example.com</div>
+          </div>
+        </div>
+
+        <div class="topics-grid">
+          <div class="topic-item"><span class="dot"></span>HTML Structure & Tags</div>
+          <div class="topic-item"><span class="dot"></span>Tables & Lists</div>
+          <div class="topic-item"><span class="dot"></span>Forms & Inputs</div>
+          <div class="topic-item"><span class="dot"></span>Frames & HTML5</div>
+          <div class="topic-item"><span class="dot"></span>CSS Selectors</div>
+          <div class="topic-item"><span class="dot"></span>CSS Properties</div>
+          <div class="topic-item"><span class="dot"></span>Positioning & Layout</div>
+          <div class="topic-item"><span class="dot"></span>Menu & Gallery</div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-box">
+            <div class="label">Questions</div>
+            <div class="value" id="totalQInfo">105</div>
+          </div>
+          <div class="info-box">
+            <div class="label">Duration</div>
+            <div class="value">60 Min</div>
+          </div>
+          <div class="info-box">
+            <div class="label">Passing</div>
+            <div class="value">60%</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="startQuiz()">Start Test →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="screen" id="quizScreen">
+    <div class="quiz-header">
+      <div class="quiz-title">
+        <div class="logo">📝</div>
+        <div>
+          <h2>HTML & CSS Quiz</h2>
+          <p id="quizStudentName">Student</p>
+        </div>
+      </div>
+      <div class="quiz-stats">
+        <div class="stat">
+          <span class="stat-icon">⏱️</span>
+          <div class="stat-info">
+            <div class="stat-label">Time</div>
+            <div class="stat-value" id="timer">60:00</div>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">✅</span>
+          <div class="stat-info">
+            <div class="stat-label">Answered</div>
+            <div class="stat-value" id="answeredCount">0/105</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-info">
+        <span>Progress</span>
+        <span id="progressText">1 / 105</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0.95%"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="questionCard">
+      <div class="question-meta">
+        <span class="question-number" id="qNumber">Question 1</span>
+        <span class="question-category" id="qCategory">HTML Basics</span>
+      </div>
+      <div class="question-text" id="qText"></div>
+      <div class="options-list" id="optionsList"></div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="prevQuestion()">← Previous</button>
+      <button class="btn btn-secondary" onclick="markForReview()">🚩 Mark</button>
+      <button class="btn btn-secondary" onclick="clearAnswer()">Clear</button>
+      <button class="btn btn-primary" onclick="nextQuestion()">Next →</button>
+    </div>
+
+    <div class="question-nav">
+      <h3>Question Navigator</h3>
+      <div class="question-grid" id="questionGrid"></div>
+      <div class="submit-section">
+        <button class="btn btn-primary" onclick="submitQuiz()">Submit Test</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div class="screen" id="resultScreen">
+    <div class="result-card">
+      <div class="score-circle">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <circle class="bg-circle" cx="100" cy="100" r="85"/>
+          <circle class="progress-circle" id="scoreCircle" cx="100" cy="100" r="85" 
+                  stroke-dasharray="534" stroke-dashoffset="534"/>
+        </svg>
+        <div class="score-value">
+          <div class="percent" id="scorePercent">0%</div>
+          <div class="label">Score</div>
+        </div>
+      </div>
+      <h2 id="resultTitle">Great Job!</h2>
+      <p class="result-msg" id="resultMsg">You've completed the test</p>
+
+      <div class="result-stats">
+        <div class="result-stat correct">
+          <div class="stat-icon">✅</div>
+          <div class="stat-num" id="correctCount">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="result-stat incorrect">
+          <div class="stat-icon">❌</div>
+          <div class="stat-num" id="incorrectCount">0</div>
+          <div class="stat-label">Incorrect</div>
+        </div>
+        <div class="result-stat skipped">
+          <div class="stat-icon">⏭️</div>
+          <div class="stat-num" id="skippedCount">0</div>
+          <div class="stat-label">Skipped</div>
+        </div>
+        <div class="result-stat">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-num" id="timeTaken">0:00</div>
+          <div class="stat-label">Time Taken</div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-whatsapp" onclick="sendWhatsAppReport()">
+          📱 Send Report to NICT
+        </button>
+        <button class="btn btn-secondary" onclick="toggleReview()">📋 Review Answers</button>
+      </div>
+
+      <div class="whatsapp-notice">
+        <div class="wa-icon">📱</div>
+        <div>
+          <strong>Report will be sent to NICT (7978758965)</strong><br>
+          <span style="font-size: 0.8rem; opacity: 0.9;">From your registered mobile via WhatsApp with full summary</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-section" id="reviewSection">
+      <h3>📊 Topic-wise Performance</h3>
+      <div class="topic-summary" id="topicSummary"></div>
+      <h3 style="margin-top: 20px;">📋 Answer Review</h3>
+      <div id="reviewList"></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 16px;">
+      <button class="btn btn-secondary" style="max-width: 300px; margin: 0 auto;" onclick="restartQuiz()">🔄 Restart Test</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============ 105 QUESTIONS ============
+const questions = [
+  // HTML Basics - 10
+  { category: "HTML Basics", question: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language"], correct: 0 },
+  { category: "HTML Basics", question: "Which tag is used to define the root of an HTML document?", options: ["<body>", "<head>", "<html>", "<root>"], correct: 2 },
+  { category: "HTML Basics", question: "Which element contains metadata about the HTML document?", options: ["<body>", "<meta>", "<head>", "<title>"], correct: 2 },
+  { category: "HTML Basics", question: "Which tag is used to create a line break?", options: ["<lb>", "<break>", "<br>", "<newline>"], correct: 2 },
+  { category: "HTML Basics", question: "Which tag defines visible page content?", options: ["<head>", "<body>", "<content>", "<main>"], correct: 1 },
+  { category: "HTML Basics", question: "Which meta tag specifies character encoding?", options: ["<meta encoding>", "<meta charset>", "<meta type>", "<meta code>"], correct: 1 },
+  { category: "HTML Basics", question: "Which tag sets the title shown in the browser tab?", options: ["<head>", "<title>", "<header>", "<name>"], correct: 1 },
+  { category: "HTML Basics", question: "HTML comments are written using?", options: ["<!-- -->", "// comment", "/* */", "<! comment !>"], correct: 0 },
+  { category: "HTML Basics", question: "Which DOCTYPE declaration is correct for HTML5?", options: ["<!DOCTYPE HTML5>", "<!DOCTYPE html>", "<DOCTYPE html>", "<!HTML5>"], correct: 1 },
+  { category: "HTML Basics", question: "Which tag is used for the largest heading?", options: ["<h6>", "<heading>", "<h1>", "<head>"], correct: 2 },
+
+  // Formatting Tags - 8
+  { category: "Formatting Tags", question: "Which tag makes text bold?", options: ["<bold>", "<b> or <strong>", "<heavy>", "<em>"], correct: 1 },
+  { category: "Formatting Tags", question: "Which tag produces italic text?", options: ["<italic>", "<i> or <em>", "<it>", "<slant>"], correct: 1 },
+  { category: "Formatting Tags", question: "Which tag underlines text?", options: ["<ul>", "<underline>", "<u>", "<line>"], correct: 2 },
+  { category: "Formatting Tags", question: "Which tag produces strikethrough text?", options: ["<strike>", "<s> or <del>", "<line>", "Both A and B"], correct: 3 },
+  { category: "Formatting Tags", question: "The <pre> tag is used to:", options: ["Create a paragraph", "Display preformatted text", "Create a pre-link", "Define a preview"], correct: 1 },
+  { category: "Formatting Tags", question: "Which tag defines a section/division in HTML?", options: ["<section>", "<div>", "<block>", "<area>"], correct: 1 },
+  { category: "Formatting Tags", question: "Which tag is semantically used for strong importance?", options: ["<b>", "<strong>", "<em>", "<bold>"], correct: 1 },
+  { category: "Formatting Tags", question: "Which tag is semantically used for emphasized text?", options: ["<i>", "<em>", "<italic>", "<stress>"], correct: 1 },
+
+  // Links & Images - 7
+  { category: "Links & Images", question: "Which attribute in <a> tag specifies the link destination?", options: ["src", "link", "href", "url"], correct: 2 },
+  { category: "Links & Images", question: "How do you create a named anchor 'top'?", options: ["<a name='top'></a>", "<a id='top'></a>", "<anchor name='top'>", "Both A and B"], correct: 3 },
+  { category: "Links & Images", question: "Which attribute opens a link in a new tab?", options: ["target='new'", "target='_blank'", "open='new'", "new='true'"], correct: 1 },
+  { category: "Links & Images", question: "Which attribute is mandatory in <img> tag?", options: ["title", "alt", "src", "height"], correct: 2 },
+  { category: "Links & Images", question: "Which attribute provides alternative text for an image?", options: ["title", "alt", "text", "desc"], correct: 1 },
+  { category: "Links & Images", question: "Which tag defines a paragraph?", options: ["<para>", "<p>", "<paragraph>", "<text>"], correct: 1 },
+  { category: "Links & Images", question: "Which tag creates a horizontal rule/line?", options: ["<line>", "<hr>", "<hl>", "<rule>"], correct: 1 },
+
+  // Tables - 8
+  { category: "Tables", question: "Which attribute defines space between cells?", options: ["cellpadding", "cellspacing", "border-spacing", "margin"], correct: 1 },
+  { category: "Tables", question: "Which attribute merges rows?", options: ["colspan", "rowspan", "merge", "span"], correct: 1 },
+  { category: "Tables", question: "Which attribute merges columns?", options: ["rowspan", "colspan", "mergecol", "span"], correct: 1 },
+  { category: "Tables", question: "Which tag defines a table header cell?", options: ["<td>", "<th>", "<thead>", "<header>"], correct: 1 },
+  { category: "Tables", question: "Which tag defines a table row?", options: ["<td>", "<tr>", "<row>", "<th>"], correct: 1 },
+  { category: "Tables", question: "Which tag defines a standard table cell?", options: ["<tr>", "<th>", "<td>", "<tc>"], correct: 2 },
+  { category: "Tables", question: "Which attribute sets the table border width?", options: ["border", "border-width", "bordersize", "edge"], correct: 0 },
+  { category: "Tables", question: "Which attribute sets space inside cells (between content and border)?", options: ["cellspacing", "cellpadding", "padding", "margin"], correct: 1 },
+
+  // Lists - 6
+  { category: "Lists", question: "Which tag creates an ordered list?", options: ["<ul>", "<ol>", "<dl>", "<list>"], correct: 1 },
+  { category: "Lists", question: "Which tag creates an unordered list?", options: ["<ol>", "<ul>", "<dl>", "<list>"], correct: 1 },
+  { category: "Lists", question: "A definition list uses which tags?", options: ["<ul> and <li>", "<ol> and <li>", "<dl>, <dt>, and <dd>", "<list> and <item>"], correct: 2 },
+  { category: "Lists", question: "Which attribute changes bullet style in <ol>?", options: ["style", "type", "bullet", "marker"], correct: 1 },
+  { category: "Lists", question: "Which tag defines a list item?", options: ["<item>", "<list>", "<li>", "<il>"], correct: 2 },
+  { category: "Lists", question: "In <ol type='A'>, the list will show?", options: ["Numbers", "Lowercase letters", "Uppercase letters", "Roman numerals"], correct: 2 },
+
+  // Forms - 12
+  { category: "Forms", question: "Which input type creates a multi-line text field?", options: ["<input type='text'>", "<textarea>", "<input type='multiline'>", "<text>"], correct: 1 },
+  { category: "Forms", question: "Which input type allows only one selection from a group?", options: ["checkbox", "radio", "select", "toggle"], correct: 1 },
+  { category: "Forms", question: "Which input type allows multiple selections?", options: ["radio", "checkbox", "select", "toggle"], correct: 1 },
+  { category: "Forms", question: "Which button clears all form fields?", options: ["submit", "button", "reset", "clear"], correct: 2 },
+  { category: "Forms", question: "Which attribute specifies where form data is sent?", options: ["method", "action", "target", "submit"], correct: 1 },
+  { category: "Forms", question: "Which method sends form data in the URL?", options: ["POST", "GET", "SEND", "PUT"], correct: 1 },
+  { category: "Forms", question: "Which tag creates a dropdown list?", options: ["<dropdown>", "<list>", "<select>", "<option>"], correct: 2 },
+  { category: "Forms", question: "Which tag defines options inside a <select>?", options: ["<li>", "<item>", "<option>", "<choice>"], correct: 2 },
+  { category: "Forms", question: "Which attribute makes a field mandatory?", options: ["mandatory", "required", "validate", "needed"], correct: 1 },
+  { category: "Forms", question: "Which attribute sets the visible width of a text input?", options: ["width", "size", "length", "cols"], correct: 1 },
+  { category: "Forms", question: "Which attribute limits maximum characters in a text input?", options: ["max", "maxlength", "limit", "chars"], correct: 1 },
+  { category: "Forms", question: "Which tag groups related form elements?", options: ["<group>", "<fieldset>", "<section>", "<formgroup>"], correct: 1 },
+
+  // Frames - 4
+  { category: "Frames", question: "Which tag divides browser window into frames?", options: ["<frame>", "<frameset>", "<div>", "<window>"], correct: 1 },
+  { category: "Frames", question: "Which attribute specifies the source of a frame?", options: ["href", "src", "link", "url"], correct: 1 },
+  { category: "Frames", question: "Which frameset attribute defines column widths?", options: ["rows", "cols", "columns", "widths"], correct: 1 },
+  { category: "Frames", question: "Nested frames means?", options: ["Frames inside frames", "Frames with borders", "Frames with colors", "Frames with images"], correct: 0 },
+
+  // HTML5 Elements - 8
+  { category: "HTML5 Elements", question: "Which HTML5 element is used for navigation links?", options: ["<navigate>", "<nav>", "<links>", "<menu>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element defines self-contained content?", options: ["<section>", "<article>", "<aside>", "<content>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element is used for sidebar content?", options: ["<side>", "<aside>", "<sidebar>", "<nav>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element defines a thematic section?", options: ["<div>", "<section>", "<chapter>", "<theme>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element represents a footer?", options: ["<bottom>", "<footer>", "<end>", "<foot>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element represents a header?", options: ["<top>", "<header>", "<head>", "<begin>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element is for figure/illustration?", options: ["<image>", "<figure>", "<pic>", "<illustration>"], correct: 1 },
+  { category: "HTML5 Elements", question: "Which HTML5 element provides caption for <figure>?", options: ["<caption>", "<figcaption>", "<title>", "<label>"], correct: 1 },
+
+  // HTML5 Multimedia - 5
+  { category: "HTML5 Multimedia", question: "Which attribute makes a video play automatically?", options: ["play", "auto", "autoplay", "start"], correct: 2 },
+  { category: "HTML5 Multimedia", question: "Which tag embeds audio in HTML5?", options: ["<sound>", "<music>", "<audio>", "<mp3>"], correct: 2 },
+  { category: "HTML5 Multimedia", question: "Which tag embeds video in HTML5?", options: ["<movie>", "<video>", "<mp4>", "<film>"], correct: 1 },
+  { category: "HTML5 Multimedia", question: "Which attribute shows video playback controls?", options: ["buttons", "controls", "player", "ui"], correct: 1 },
+  { category: "HTML5 Multimedia", question: "Which tag provides fallback content for media?", options: ["<fallback>", "<source>", "<alt>", "<backup>"], correct: 1 },
+
+  // HTML5 Form Validations - 7
+  { category: "HTML5 Validation", question: "Which attribute makes a field mandatory in HTML5?", options: ["mandatory", "required", "validate", "necessary"], correct: 1 },
+  { category: "HTML5 Validation", question: "Which attribute validates input against a regular expression?", options: ["regex", "validate", "pattern", "match"], correct: 2 },
+  { category: "HTML5 Validation", question: "Which attribute auto-focuses a field on page load?", options: ["focus", "autofocus", "auto-focus", "selected"], correct: 1 },
+  { category: "HTML5 Validation", question: "Which input type validates email format?", options: ["type='mail'", "type='email'", "type='text'", "type='address'"], correct: 1 },
+  { category: "HTML5 Validation", question: "Which input type accepts only numbers with spinner?", options: ["digits", "number", "count", "integer"], correct: 1 },
+  { category: "HTML5 Validation", question: "Which input type provides a date picker?", options: ["calendar", "date", "datetime", "picker"], correct: 1 },
+  { category: "HTML5 Validation", question: "Which input type creates a slider control?", options: ["slider", "range", "scale", "scroll"], correct: 1 },
+
+  // HTML5 Layout & Iframe - 5
+  { category: "HTML5 Layout", question: "Which HTML5 element embeds another webpage?", options: ["<frame>", "<embed>", "<iframe>", "<object>"], correct: 2 },
+  { category: "HTML5 Layout", question: "Which attribute in <iframe> specifies the URL?", options: ["href", "src", "link", "url"], correct: 1 },
+  { category: "HTML5 Layout", question: "Which HTML5 tag embeds external content like Flash/PDF?", options: ["<iframe>", "<object>", "<embed>", "Both B and C"], correct: 3 },
+  { category: "HTML5 Layout", question: "HTML5 semantic elements help in?", options: ["Faster loading", "Better SEO & accessibility", "Smaller file size", "Better colors"], correct: 1 },
+  { category: "HTML5 Layout", question: "Which attribute removes iframe border?", options: ["border='0'", "frameborder='0'", "no-border", "Both A and B"], correct: 3 },
+
+  // CSS Basics - 6
+  { category: "CSS Basics", question: "What does CSS stand for?", options: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"], correct: 1 },
+  { category: "CSS Basics", question: "Which is NOT a type of CSS?", options: ["Inline CSS", "Internal CSS", "External CSS", "Dynamic CSS"], correct: 3 },
+  { category: "CSS Basics", question: "Inline CSS is written using which attribute?", options: ["css", "style", "class", "font"], correct: 1 },
+  { category: "CSS Basics", question: "Internal CSS is written inside which tag?", options: ["<css>", "<style>", "<script>", "<head-css>"], correct: 1 },
+  { category: "CSS Basics", question: "External CSS is linked using which tag?", options: ["<css>", "<style src>", "<link>", "<import>"], correct: 2 },
+  { category: "CSS Basics", question: "Which has the highest specificity?", options: ["Tag selector", "Class selector", "ID selector", "Universal selector"], correct: 2 },
+
+  // CSS Selectors - 10
+  { category: "CSS Selectors", question: "Which symbol selects by ID?", options: [".", "#", "*", "@"], correct: 1 },
+  { category: "CSS Selectors", question: "Which symbol selects by class?", options: ["#", ".", "&", "*"], correct: 1 },
+  { category: "CSS Selectors", question: "The * selector is known as?", options: ["Class selector", "Universal selector", "ID selector", "Group selector"], correct: 1 },
+  { category: "CSS Selectors", question: "Which selector targets <p> directly inside <div>?", options: ["div p", "div > p", "div + p", "div ~ p"], correct: 1 },
+  { category: "CSS Selectors", question: "Which selector selects all <p> inside <div> (any depth)?", options: ["div > p", "div p", "div + p", "div ~ p"], correct: 1 },
+  { category: "CSS Selectors", question: "Which selector selects adjacent sibling?", options: ["div p", "div > p", "div + p", "div ~ p"], correct: 2 },
+  { category: "CSS Selectors", question: "Which selector selects general siblings?", options: ["div + p", "div ~ p", "div p", "div > p"], correct: 1 },
+  { category: "CSS Selectors", question: "Which is an attribute selector?", options: ["p.red", "p[href]", "#main", "p:hover"], correct: 1 },
+  { category: "CSS Selectors", question: "Which is a group selector?", options: ["h1, h2, h3", "h1 h2 h3", "h1 > h2", "h1 + h2"], correct: 0 },
+  { category: "CSS Selectors", question: "Which is a pseudo-class?", options: ["#id", ".class", ":hover", "[type]"], correct: 2 },
+
+  // CSS Properties - 12
+  { category: "CSS Properties", question: "Which property changes background color?", options: ["color", "bgcolor", "background-color", "bg-color"], correct: 2 },
+  { category: "CSS Properties", question: "Which property sets space INSIDE an element?", options: ["margin", "padding", "spacing", "border-space"], correct: 1 },
+  { category: "CSS Properties", question: "Which property sets space OUTSIDE an element?", options: ["padding", "margin", "spacing", "gap"], correct: 1 },
+  { category: "CSS Properties", question: "Which property changes font size?", options: ["text-size", "font-size", "text-style", "size"], correct: 1 },
+  { category: "CSS Properties", question: "Which property changes text color?", options: ["text-color", "font-color", "color", "foreground"], correct: 2 },
+  { category: "CSS Properties", question: "Which property sets all four borders at once?", options: ["border-side", "border", "all-border", "border-style"], correct: 1 },
+  { category: "CSS Properties", question: "Which property sets background image?", options: ["bg-image", "background-image", "image", "back-image"], correct: 1 },
+  { category: "CSS Properties", question: "Which property controls background repeat?", options: ["bg-repeat", "background-repeat", "repeat", "tile"], correct: 1 },
+  { category: "CSS Properties", question: "Which property sets element width?", options: ["size", "width", "wide", "w"], correct: 1 },
+  { category: "CSS Properties", question: "Which property sets element height?", options: ["tall", "height", "h", "size"], correct: 1 },
+  { category: "CSS Properties", question: "Which property sets element transparency?", options: ["transparency", "alpha", "opacity", "visible"], correct: 2 },
+  { category: "CSS Properties", question: "Which property changes the mouse cursor?", options: ["pointer", "mouse", "cursor", "hand"], correct: 2 },
+
+  // CSS Positioning - 5
+  { category: "CSS Positioning", question: "Which position value positions relative to viewport?", options: ["relative", "absolute", "fixed", "static"], correct: 2 },
+  { category: "CSS Positioning", question: "Which position value positions relative to nearest positioned ancestor?", options: ["fixed", "absolute", "relative", "sticky"], correct: 1 },
+  { category: "CSS Positioning", question: "Which is the default position value?", options: ["relative", "absolute", "static", "fixed"], correct: 2 },
+  { category: "CSS Positioning", question: "Which property controls stacking order?", options: ["order", "stack", "z-index", "layer"], correct: 2 },
+  { category: "CSS Positioning", question: "Which display value hides element but keeps space?", options: ["display: none", "display: hidden", "visibility: hidden", "display: invisible"], correct: 2 },
+
+  // CSS Lists, Tables, Menu, Gallery - 6
+  { category: "CSS Lists & Tables", question: "Which property changes bullet style?", options: ["list-style-type", "bullet-type", "list-type", "marker-style"], correct: 0 },
+  { category: "CSS Lists & Tables", question: "Which property removes bullets from a list?", options: ["list-style: none", "bullet: none", "no-bullet", "marker: none"], correct: 0 },
+  { category: "CSS Lists & Tables", question: "Which CSS property collapses table borders?", options: ["border-collapse", "border-merge", "collapse", "merge-borders"], correct: 0 },
+  { category: "CSS Menu Design", question: "Which display value is used for horizontal menus?", options: ["display: block", "display: inline or inline-block", "display: table", "display: grid"], correct: 1 },
+  { category: "CSS Menu Design", question: "Which pseudo-class styles a link on hover?", options: [":active", ":hover", ":link", ":visited"], correct: 1 },
+  { category: "CSS Image Gallery", question: "Which CSS layout is best for image galleries?", options: ["float", "flexbox/grid", "position", "table"], correct: 1 }
+];
+
+// ============ STATE ============
+let studentData = {};
+let currentQuestion = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let markedQuestions = new Set();
+let timerInterval;
+let timeLeft = 60 * 60;
+let startTime;
+
+// ============ LOGIN ============
+function handleLogin(e) {
+  e.preventDefault();
+  const name = document.getElementById('studentName').value.trim();
+  const mobile = document.getElementById('studentMobile').value.trim();
+  const email = document.getElementById('studentEmail').value.trim();
+  const roll = document.getElementById('studentRoll').value.trim();
+  const batch = document.getElementById('studentBatch').value.trim();
+
+  // Reset errors
+  document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
+
+  let valid = true;
+  if (!name || name.length < 2) {
+    document.getElementById('nameError').classList.add('show');
+    valid = false;
+  }
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    document.getElementById('mobileError').classList.add('show');
+    valid = false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('emailError').classList.add('show');
+    valid = false;
+  }
+
+  if (!valid) return false;
+
+  studentData = {
+    name, mobile, email,
+    roll: roll || 'N/A',
+    batch: batch || 'N/A',
+    loginTime: new Date().toLocaleString('en-IN')
+  };
+
+  showWelcome();
+  return false;
+}
+
+function showWelcome() {
+  document.getElementById('loginScreen').classList.remove('active');
+  document.getElementById('welcomeScreen').classList.add('active');
+  document.getElementById('welcomeName').textContent = studentData.name;
+  document.getElementById('welcomeMeta').textContent = `📱 +91 ${studentData.mobile} • 📧 ${studentData.email}`;
+  document.getElementById('studentAvatar').textContent = studentData.name.charAt(0).toUpperCase();
+  document.getElementById('totalQInfo').textContent = questions.length;
+}
+
+// ============ QUIZ ============
+function startQuiz() {
+  document.getElementById('welcomeScreen').classList.remove('active');
+  document.getElementById('quizScreen').classList.add('active');
+  document.getElementById('quizStudentName').textContent = studentData.name;
+  startTime = Date.now();
+  buildQuestionGrid();
+  loadQuestion(0);
+  startTimer();
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const min = Math.floor(timeLeft / 60);
+    const sec = timeLeft % 60;
+    document.getElementById('timer').textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      alert('⏰ Time is up! Submitting your test...');
+      submitQuiz(true);
+    }
+  }, 1000);
+}
+
+function buildQuestionGrid() {
+  const grid = document.getElementById('questionGrid');
+  grid.innerHTML = '';
+  questions.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'q-dot';
+    dot.textContent = i + 1;
+    dot.onclick = () => loadQuestion(i);
+    grid.appendChild(dot);
+  });
+  updateGrid();
+}
+
+function updateGrid() {
+  const dots = document.querySelectorAll('.q-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.remove('current', 'answered', 'marked');
+    if (i === currentQuestion) dot.classList.add('current');
+    else if (markedQuestions.has(i)) dot.classList.add('marked');
+    else if (userAnswers[i] !== null) dot.classList.add('answered');
+  });
+}
+
+function loadQuestion(index) {
+  currentQuestion = index;
+  const q = questions[index];
+  const card = document.getElementById('questionCard');
+  card.classList.remove('slide-in');
+  void card.offsetWidth;
+  card.classList.add('slide-in');
+
+  document.getElementById('qNumber').textContent = `Question ${index + 1}`;
+  document.getElementById('qCategory').textContent = q.category;
+  document.getElementById('qText').innerHTML = q.question;
+  document.getElementById('progressText').textContent = `${index + 1} / ${questions.length}`;
+  document.getElementById('progressFill').style.width = `${((index + 1) / questions.length) * 100}%`;
+
+  const optionsList = document.getElementById('optionsList');
+  optionsList.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    if (userAnswers[index] === i) div.classList.add('selected');
+    div.innerHTML = `
+      <div class="option-letter">${letters[i]}</div>
+      <div class="option-text">${opt}</div>
+    `;
+    div.onclick = () => selectOption(i);
+    optionsList.appendChild(div);
+  });
+
+  updateGrid();
+  updateAnsweredCount();
+}
+
+function selectOption(i) {
+  userAnswers[currentQuestion] = i;
+  loadQuestion(currentQuestion);
+}
+
+function clearAnswer() {
+  userAnswers[currentQuestion] = null;
+  loadQuestion(currentQuestion);
+}
+
+function markForReview() {
+  if (markedQuestions.has(currentQuestion)) markedQuestions.delete(currentQuestion);
+  else markedQuestions.add(currentQuestion);
+  updateGrid();
+}
+
+function nextQuestion() {
+  if (currentQuestion < questions.length - 1) loadQuestion(currentQuestion + 1);
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) loadQuestion(currentQuestion - 1);
+}
+
+function updateAnsweredCount() {
+  const answered = userAnswers.filter(a => a !== null).length;
+  document.getElementById('answeredCount').textContent = `${answered}/${questions.length}`;
+}
+
+// ============ SUBMIT ============
+function submitQuiz(autoSubmit = false) {
+  if (!autoSubmit) {
+    const unanswered = userAnswers.filter(a => a === null).length;
+    if (unanswered > 0) {
+      if (!confirm(`You have ${unanswered} unanswered question(s). Submit anyway?`)) return;
+    } else {
+      if (!confirm('Are you sure you want to submit the test?')) return;
+    }
+  }
+  clearInterval(timerInterval);
+  showResults();
+}
+
+function showResults() {
+  document.getElementById('quizScreen').classList.remove('active');
+  document.getElementById('resultScreen').classList.add('active');
+
+  let correct = 0, incorrect = 0, skipped = 0;
+  questions.forEach((q, i) => {
+    if (userAnswers[i] === null) skipped++;
+    else if (userAnswers[i] === q.correct) correct++;
+    else incorrect++;
+  });
+
+  const percent = Math.round((correct / questions.length) * 100);
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('incorrectCount').textContent = incorrect;
+  document.getElementById('skippedCount').textContent = skipped;
+
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const min = Math.floor(elapsed / 60);
+  const sec = elapsed % 60;
+  document.getElementById('timeTaken').textContent = `${min}:${sec.toString().padStart(2, '0')}`;
+
+  const circle = document.getElementById('scoreCircle');
+  const circumference = 2 * Math.PI * 85;
+  const offset = circumference - (percent / 100) * circumference;
+  setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+
+  let current = 0;
+  const target = percent;
+  const step = Math.max(1, Math.floor(target / 40));
+  const counter = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(counter); }
+    document.getElementById('scorePercent').textContent = `${current}%`;
+  }, 30);
+
+  let title, msg;
+  if (percent >= 80) { title = "🏆 Excellent!"; msg = "Outstanding performance! You've mastered HTML & CSS."; }
+  else if (percent >= 60) { title = "🎉 Passed!"; msg = "Great job! You've cleared the test."; }
+  else if (percent >= 40) { title = "📚 Almost There"; msg = "Review the topics and try again."; }
+  else { title = "💪 Keep Practicing"; msg = "Don't give up! Review the material and retake."; }
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultMsg').textContent = msg;
+
+  buildTopicSummary();
+  buildReview();
+
+  // Auto-open WhatsApp after a short delay
+  setTimeout(() => {
+    if (confirm('📱 Send your test report to NICT (7978758965) via WhatsApp now?')) {
+      sendWhatsAppReport();
+    }
+  }, 1500);
+}
+
+// ============ TOPIC SUMMARY ============
+function buildTopicSummary() {
+  const topicStats = {};
+  questions.forEach((q, i) => {
+    if (!topicStats[q.category]) topicStats[q.category] = { total: 0, correct: 0 };
+    topicStats[q.category].total++;
+    if (userAnswers[i] === q.correct) topicStats[q.category].correct++;
+  });
+
+  const container = document.getElementById('topicSummary');
+  container.innerHTML = '';
+  Object.keys(topicStats).forEach(topic => {
+    const s = topicStats[topic];
+    const pct = Math.round((s.correct / s.total) * 100);
+    const color = pct >= 70 ? 'var(--success)' : pct >= 40 ? 'var(--warning)' : 'var(--danger)';
+    const item = document.createElement('div');
+    item.className = 'topic-summary-item';
+    item.innerHTML = `
+      <div class="t-name">${topic}</div>
+      <div class="t-score" style="color: ${color}">${s.correct}/${s.total} (${pct}%)</div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+// ============ REVIEW ============
+function buildReview() {
+  const list = document.getElementById('reviewList');
+  list.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  questions.forEach((q, i) => {
+    const userAns = userAnswers[i];
+    let status, statusClass, itemClass;
+    if (userAns === null) { status = 'Skipped'; statusClass = 'skipped'; itemClass = 'skipped-review'; }
+    else if (userAns === q.correct) { status = 'Correct'; statusClass = 'correct'; itemClass = 'correct-review'; }
+    else { status = 'Incorrect'; statusClass = 'incorrect'; itemClass = 'incorrect-review'; }
+
+    const item = document.createElement('div');
+    item.className = `review-item ${itemClass}`;
+    let answersHTML = `<div class="review-answer correct-answer">✓ Correct: ${letters[q.correct]}. ${q.options[q.correct]}</div>`;
+    if (userAns !== null && userAns !== q.correct) {
+      answersHTML = `<div class="review-answer your-answer">✗ Your answer: ${letters[userAns]}. ${q.options[userAns]}</div>` + answersHTML;
+    } else if (userAns === null) {
+      answersHTML = `<div class="review-answer your-answer">— Not answered</div>` + answersHTML;
+    }
+
+    item.innerHTML = `
+      <div class="review-q-head">
+        <span class="review-q-num">Q${i + 1} • ${q.category}</span>
+        <span class="review-status ${statusClass}">${status}</span>
+      </div>
+      <div class="review-q-text">${q.question}</div>
+      ${answersHTML}
+    `;
+    list.appendChild(item);
+  });
+}
+
+function toggleReview() {
+  const section = document.getElementById('reviewSection');
+  section.classList.toggle('show');
+  if (section.classList.contains('show')) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// ============ WHATSAPP REPORT ============
+function sendWhatsAppReport() {
+  let correct = 0, incorrect = 0, skipped = 0;
+  const topicStats = {};
+  questions.forEach((q, i) => {
+    if (!topicStats[q.category]) topicStats[q.category] = { total: 0, correct: 0 };
+    topicStats[q.category].total++;
+    if (userAnswers[i] === null) skipped++;
+    else if (userAnswers[i] === q.correct) {
+      correct++;
+      topicStats[q.category].correct++;
+    } else incorrect++;
+  });
+
+  const percent = Math.round((correct / questions.length) * 100);
+  const status = percent >= 60 ? '✅ PASS' : '❌ FAIL';
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const min = Math.floor(elapsed / 60);
+  const sec = elapsed % 60;
+  const testDate = new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'short' });
+
+  // Build topic breakdown
+  let topicBreakdown = '';
+  Object.keys(topicStats).forEach(topic => {
+    const s = topicStats[topic];
+    const pct = Math.round((s.correct / s.total) * 100);
+    topicBreakdown += `• ${topic}: ${s.correct}/${s.total} (${pct}%)\n`;
+  });
+
+  const message = 
+`🎓 *NICT - HTML & CSS MCQ TEST REPORT*
+━━━━━━━━━━━━━━━━━━━━━━
+
+👤 *STUDENT DETAILS*
+• Name: ${studentData.name}
+• Mobile: +91 ${studentData.mobile}
+• Email: ${studentData.email}
+• Roll No: ${studentData.roll}
+• Batch: ${studentData.batch}
+• Test Taken: ${testDate}
+
+📊 *TEST SUMMARY*
+• Total Questions: ${questions.length}
+• ✅ Correct: ${correct}
+• ❌ Incorrect: ${incorrect}
+• ⏭️ Skipped: ${skipped}
+• 🎯 Score: *${percent}%*
+• ⏱️ Time Taken: ${min} min ${sec} sec
+• 📋 Result: *${status}*
+
+📚 *TOPIC-WISE PERFORMANCE*
+${topicBreakdown}
+━━━━━━━━━━━━━━━━━━━━━━
+📱 Report sent from student's mobile
+🏫 NICT Assessment Portal`;
+
+  // NICT mobile number with India country code
+  const nictNumber = '917978758965';
+  const encodedMsg = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/${nictNumber}?text=${encodedMsg}`;
+  
+  window.open(whatsappURL, '_blank');
+}
+
+// ============ RESTART ============
+function restartQuiz() {
+  currentQuestion = 0;
+  userAnswers = new Array(questions.length).fill(null);
+  markedQuestions = new Set();
+  timeLeft = 60 * 60;
+  document.getElementById('resultScreen').classList.remove('active');
+  document.getElementById('reviewSection').classList.remove('show');
+  document.getElementById('scoreCircle').style.strokeDashoffset = 534;
+  document.getElementById('timer').textContent = '60:00';
+  document.getElementById('welcomeScreen').classList.add('active');
+}
+</script>
+</body>
+</html>
